@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://control/" targetNamespace="http://control/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="calcularComplexidade" type="tns:calcularComplexidade" />
+  <xs:element name="calcularComplexidadeResponse" type="tns:calcularComplexidadeResponse" />
+  <xs:complexType name="calcularComplexidade">
+    <xs:sequence>
+      <xs:element name="nos" type="xs:int" />
+      <xs:element name="arestas" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="calcularComplexidadeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

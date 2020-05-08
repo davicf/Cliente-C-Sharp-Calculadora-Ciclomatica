@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://control/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CalculadoraService" targetNamespace="http://control/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:10001/calculadora?xsd=1" namespace="http://control/" />
+    </xsd:schema>
+  </types>
+  <message name="calcularComplexidade">
+    <part name="parameters" element="tns:calcularComplexidade" />
+  </message>
+  <message name="calcularComplexidadeResponse">
+    <part name="parameters" element="tns:calcularComplexidadeResponse" />
+  </message>
+  <portType name="Calculadora">
+    <operation name="calcularComplexidade">
+      <input wsam:Action="http://control/Calculadora/calcularComplexidadeRequest" message="tns:calcularComplexidade" />
+      <output wsam:Action="http://control/Calculadora/calcularComplexidadeResponse" message="tns:calcularComplexidadeResponse" />
+    </operation>
+  </portType>
+  <binding name="CalculadoraPortBinding" type="tns:Calculadora">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="calcularComplexidade">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CalculadoraService">
+    <port name="CalculadoraPort" binding="tns:CalculadoraPortBinding">
+      <soap:address location="http://localhost:10001/calculadora" />
+    </port>
+  </service>
+</definitions>
